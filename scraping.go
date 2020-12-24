@@ -7,25 +7,26 @@ import (
 )
 
 func main() {
-	doc, err := goquery.NewDocument("https://kaopane.com/faces/") 
+	doc, err := goquery.NewDocument("https://kaopane.com/faces/")
 	if err != nil {
-		log.Print("htmlの取得に失敗しました") 
-	} 
-	タイトル
-	titles := doc.Find("h2.entry-title") 
-	titles.Each(func(i int, s *goquery.Selection){ 
-		fmt.Print(s.Text()) 
-	}) 
+		log.Print(err)
+	}
 
-	// 画像URL
-// 	images := doc.Find("a.entry-thumbnail")
+	// 記事
+	articles := doc.Find("article")
+	articles.Each(func(_ int, article *goquery.Selection) {
+		// タイトル
+		title := article.Find("h2.entry-title")
+		fmt.Println(title.Text())
 
-// 	func GetPage(url string) {
-// 		doc, _ := goquery.NewDocument(url)
-// 		doc.Find("img").Each(func(_ int, s *goquery.Selection) {
-// 			 url, _ := s.Attr("src")
-// 			 fmt.Println(url)
-// 		})
-//    }
+		// サムネイル
+		thumbnail := article.Find("a.entry-thumbnail")
 
+		// パネル画像
+		panelImage, exist := thumbnail.Find("img").Attr("src")
+		if !exist {
+			log.Print("not exist src")
+		}
+		fmt.Println(panelImage)
+	})
 }
