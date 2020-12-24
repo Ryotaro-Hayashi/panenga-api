@@ -11,27 +11,22 @@ func main() {
 	if err != nil {
 		log.Print(err) 
 	} 
-	// タイトル
-	// titles := doc.Find("h2.entry-title") 
-	// titles.Each(func(i int, s *goquery.Selection){ 
-	// 	fmt.Println(s.Text()) 
-	// }) 
 
-	thumbnails := doc.Find("a.entry-thumbnail")
-	// 詳細ページのURL
-	thumbnails.Each(func(i int, s *goquery.Selection) {
-		detailUrl, exist := s.Attr("href")
+	// 記事
+	articles := doc.Find("article")
+	articles.Each(func(_ int, article *goquery.Selection) {
+		// タイトル
+		title := article.Find("h2.entry-title")
+		fmt.Println(title.Text())
+
+		// サムネイル
+		thumbnail := article.Find("a.entry-thumbnail")
+
+		// パネル画像
+		panelImage, exist := thumbnail.Find("img").Attr("src")
 		if !exist {
-			log.Print("not exist href")
+			log.Print("not exist src")
 		}
-		fmt.Println(detailUrl)
+		fmt.Println(panelImage)
 	})
-
-	// 画像を一件取得
-	images, exist := thumbnails.Find("img").Attr("src")
-	if !exist {
-		log.Print("not exist src")
-	}
-	fmt.Println(images)
-
 }
