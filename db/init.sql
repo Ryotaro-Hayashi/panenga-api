@@ -9,3 +9,5 @@ CREATE TABLE panels(
   created_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+INSERT INTO panels (title, panel_image) VALUES ("テストデータ", "https://unit42.paloaltonetworks.com/wp-content/uploads/2019/07/golang-hacker.jpg");

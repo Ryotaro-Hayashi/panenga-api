@@ -11,7 +11,7 @@ import (
 // Driver名
 const driverName = "mysql"
 
-// Conn 各repositoryで利用するDB接続(Connection)情報
+// DB接続(Connection)情報
 var Conn *sql.DB
 
 func init() {
