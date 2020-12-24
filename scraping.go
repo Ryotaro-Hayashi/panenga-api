@@ -11,14 +11,21 @@ func main() {
 	if err != nil {
 		log.Print("htmlの取得に失敗しました") 
 	} 
-	タイトル
-	titles := doc.Find("h2.entry-title") 
-	titles.Each(func(i int, s *goquery.Selection){ 
-		fmt.Print(s.Text()) 
-	}) 
+	// タイトル
+	// titles := doc.Find("h2.entry-title") 
+	// titles.Each(func(i int, s *goquery.Selection){ 
+	// 	fmt.Print(s.Text()) 
+	// }) 
 
-	// 画像URL
-// 	images := doc.Find("a.entry-thumbnail")
+	images := doc.Find("a.entry-thumbnail")
+	images.Each(func(i int, s *goquery.Selection) {
+		// 詳細ページのURL
+		detailUrl, exist := s.Attr("href")
+		if !exist {
+			log.Print("href属性は存在しません")
+		}
+		fmt.Print(detailUrl)
+	})
 
 // 	func GetPage(url string) {
 // 		doc, _ := goquery.NewDocument(url)
