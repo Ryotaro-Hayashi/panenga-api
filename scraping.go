@@ -7,10 +7,10 @@ import (
 )
 
 func main() {
-	doc, err := goquery.NewDocument("https://kaopane.com/faces/") 
+	doc, err := goquery.NewDocument("https://kaopane.com/faces/")
 	if err != nil {
-		log.Print(err) 
-	} 
+		log.Print(err)
+	}
 
 	// 記事
 	articles := doc.Find("article")
