@@ -9,30 +9,29 @@ import (
 func main() {
 	doc, err := goquery.NewDocument("https://kaopane.com/faces/") 
 	if err != nil {
-		log.Print("htmlの取得に失敗しました") 
+		log.Print(err) 
 	} 
 	// タイトル
 	// titles := doc.Find("h2.entry-title") 
 	// titles.Each(func(i int, s *goquery.Selection){ 
-	// 	fmt.Print(s.Text()) 
+	// 	fmt.Println(s.Text()) 
 	// }) 
 
-	images := doc.Find("a.entry-thumbnail")
-	images.Each(func(i int, s *goquery.Selection) {
-		// 詳細ページのURL
+	thumbnails := doc.Find("a.entry-thumbnail")
+	// 詳細ページのURL
+	thumbnails.Each(func(i int, s *goquery.Selection) {
 		detailUrl, exist := s.Attr("href")
 		if !exist {
-			log.Print("href属性は存在しません")
+			log.Print("not exist href")
 		}
-		fmt.Print(detailUrl)
+		fmt.Println(detailUrl)
 	})
 
-// 	func GetPage(url string) {
-// 		doc, _ := goquery.NewDocument(url)
-// 		doc.Find("img").Each(func(_ int, s *goquery.Selection) {
-// 			 url, _ := s.Attr("src")
-// 			 fmt.Println(url)
-// 		})
-//    }
+	// 画像を一件取得
+	images, exist := thumbnails.Find("img").Attr("src")
+	if !exist {
+		log.Print("not exist src")
+	}
+	fmt.Println(images)
 
 }
