@@ -4,13 +4,19 @@ import (
 	"app_data/pkg/server/model"
 	"app_data/pkg/server/view"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func HandleGetPanels(c *gin.Context) {
 
 	panels, err := model.GetPanels()
 	if err != nil {
-		c.Status(500)
+		view.ErrorResponse(
+			http.StatusInternalServerError,
+			"Internal Server Error",
+			"Database related error",
+			c,
+		)
 		return
 	}
 

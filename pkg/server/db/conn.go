@@ -3,8 +3,8 @@ package db
 import (
 	"database/sql"
 	"fmt"
-	"os"
 	_ "github.com/go-sql-driver/mysql"
+	"os"
 )
 
 // Driver名

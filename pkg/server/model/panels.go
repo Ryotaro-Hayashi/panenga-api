@@ -1,19 +1,19 @@
 package model
 
 import (
-	"fmt"
 	"app_data/pkg/server/db"
+	"fmt"
 )
 
 type Panel struct {
-	ID   int    `json:"id"`
-	Title string `json:"title"`
+	ID         int    `json:"id"`
+	Title      string `json:"title"`
 	PanelImage string `json:"panel_image"`
-	CreatedAt   string `json:"create_at"`
-	UpdatedAt   string `json:"update_at"`
+	CreatedAt  string `json:"create_at"`
+	UpdatedAt  string `json:"update_at"`
 }
 
-func GetPanels() (panels []Panel, err error){
+func GetPanels() (panels []Panel, err error) {
 	rows, err := db.Conn.Query("SELECT id, title, panel_image, created_at, updated_at FROM panels")
 
 	if err != nil {
@@ -30,6 +30,6 @@ func GetPanels() (panels []Panel, err error){
 		}
 		panels = append(panels, panel)
 	}
-	
+
 	return
 }
