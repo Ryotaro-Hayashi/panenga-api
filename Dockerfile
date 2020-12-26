@@ -1,7 +1,7 @@
 FROM golang:1.13-alpine
 
 # 作業ディレクトリの作成・設定
-WORKDIR /app_data
+WORKDIR /panenga-api
 # Go Modules を有効化
 ENV GO111MODULE=on
 

@@ -1,9 +1,9 @@
 package server
 
 import (
-	"app_data/pkg/server/handler"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"panenga-api/pkg/server/handler"
 	"time"
 )
 

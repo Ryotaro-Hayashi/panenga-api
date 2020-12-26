@@ -1,7 +1,7 @@
 package main
 
 import (
-	"app_data/pkg/server"
+	"panenga-api/pkg/server"
 )
 
 func main() {

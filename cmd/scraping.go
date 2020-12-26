@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"app_data/pkg/server/db"
+	"panenga-api/pkg/server/db"
 	"strings"
 )
 
