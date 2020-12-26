@@ -33,37 +33,39 @@ func init() {
 		Conn, err = sql.Open(driverName, dataSource)
 
 		if err != nil {
-			fmt.Errorf("open mysql, %s", err)
+			fmt.Printf("open mysql, %s", err)
 			return
 		}
 
+		fmt.Printf("open mysql success")
+
 		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS panenga_db")
 		if err != nil {
-			fmt.Errorf("create database, %s", err)
+			fmt.Printf("create database, %s", err)
 			return
 		}
 
 		_, err = Conn.Exec("USE panenga_db")
 		if err != nil {
-			fmt.Errorf("use database, %s", err)
+			fmt.Printf("use database, %s", err)
 			return
 		}
 
 		_, err = Conn.Exec("CREATE TABLE panels(id INTEGER PRIMARY KEY AUTO_INCREMENT, title VARCHAR(64) NOT NULL, panel_image VARCHAR(255) NOT NULL UNIQUE, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)")
 		if err != nil {
-			fmt.Errorf("create table, %s", err)
+			fmt.Printf("create table, %s", err)
 			return
 		}
 
 		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (三井アウトレットパーク札幌北広島, https://file24-d.kuku.lu/files/20201226-0812_c12fae45310a831a7a39834c9ecd9dcb.jpg)")
 		if err != nil {
-			fmt.Errorf("insert test data 1, %s", err)
+			fmt.Printf("insert test data 1, %s", err)
 			return
 		}
 
 		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (青森ねぶた祭り, https://file24-d.kuku.lu/files/20201226-0814_1e834f3d94c0baf3e5e914dd7135181e.jpg)")
 		if err != nil {
-			fmt.Errorf("insert test data 2, %s", err)
+			fmt.Printf("insert test data 2, %s", err)
 			return
 		}
 
@@ -74,6 +76,6 @@ func init() {
 			fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database))
 	}
 	if err != nil {
-		fmt.Errorf("open mysql, %s", err)
+		fmt.Printf("open mysql, %s", err)
 	}
 }
