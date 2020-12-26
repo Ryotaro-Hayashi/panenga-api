@@ -5,9 +5,9 @@ WORKDIR /panenga-api
 # Go Modules を有効化
 ENV GO111MODULE=on
 
-COPY go.mod .
+# COPY go.mod .
 
 # go.mod 内のパッケージをダウンロード
-RUN go mod download
+# RUN go mod download
 
 EXPOSE 8080
