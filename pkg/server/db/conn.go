@@ -29,8 +29,8 @@ func init() {
 	var err error
 
 	if os.Getenv("PRODUCTION") == "true" {
-		// dataSource := os.Getenv("DATABASE_URL")
-		Conn, err = sql.Open(driverName, "user:userpass@tcp(172.16.0.23:53:3306)/panenga_db?parseTime=true")
+		dataSource := os.Getenv("DATABASE_URL")
+		Conn, err = sql.Open(driverName, dataSource)
 
 		if err != nil {
 			fmt.Errorf("open mysql, %s", err)
