@@ -28,8 +28,13 @@ func init() {
 
 	var err error
 
-	Conn, err = sql.Open(driverName,
-		fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database))
+	if os.Getenv("PRODUCTION") == "true" {
+		dataSource = os.Getenv("DATABASE_URL")
+		Conn, err = sql.Open(driverName, dataSource)
+	} else {
+		Conn, err = sql.Open(driverName,
+			fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database))
+	}
 	if err != nil {
 		fmt.Errorf("open mysql, %s", err)
 	}
