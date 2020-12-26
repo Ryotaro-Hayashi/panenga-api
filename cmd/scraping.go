@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"log"
+	"app_data/pkg/server/db"
+	"strings"
 )
 
 func main() {
 	doc, err := goquery.NewDocument("https://kaopane.com/faces/")
 	if err != nil {
-		log.Print(err)
+		fmt.Println(fmt.Errorf("go scraping, %s", err))
 	}
 
 	// 記事
@@ -17,7 +18,6 @@ func main() {
 	articles.Each(func(_ int, article *goquery.Selection) {
 		// タイトル
 		title := article.Find("h2.entry-title")
-		fmt.Println(title.Text())
 
 		// サムネイル
 		thumbnail := article.Find("a.entry-thumbnail")
@@ -25,8 +25,20 @@ func main() {
 		// パネル画像
 		panelImage, exist := thumbnail.Find("img").Attr("src")
 		if !exist {
-			log.Print("not exist src")
+			fmt.Println("not exist src")
+			return
 		}
-		fmt.Println(panelImage)
+
+		slice := strings.Split(title.Text(), "\n\t\t\t")
+		slice = strings.Split(slice[1], "\n\t\t")
+
+		// 画像とタイトルを挿入
+		_, err := db.Conn.Query("INSERT INTO panels (title, panel_image) VALUES (?, ?)", slice[0], panelImage)
+
+		if err != nil {
+			fmt.Println(fmt.Errorf("query post panels, %s, %s", slice[0], err))
+		}
+
+		return
 	})
 }
