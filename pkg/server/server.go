@@ -39,7 +39,7 @@ func init() {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	router.GET("/panels", handler.HandleGetPanels)
+	router.GET("/api/v1/panels", handler.HandleGetPanels)
 
 	Router = router
 }
