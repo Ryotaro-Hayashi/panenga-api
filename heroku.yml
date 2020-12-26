@@ -1,0 +1,16 @@
+build:
+  docker:
+    web: Dockerfile.prod
+    worker:
+      dockerfile: Dockerfile
+      target: builder 
+release:
+  image: worker
+  command:
+    - make up_migrate_prod
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+run:
+  web: go run /panenga-api/cmd/main.go
