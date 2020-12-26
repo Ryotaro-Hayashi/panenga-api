@@ -1,8 +1,8 @@
 package model
 
 import (
-	"app_data/pkg/server/db"
 	"fmt"
+	"panenga-api/pkg/server/db"
 )
 
 type Panel struct {

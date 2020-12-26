@@ -1,9 +1,9 @@
 package view
 
 import (
-	"app_data/pkg/server/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"panenga-api/pkg/server/model"
 )
 
 type PanelsGetResponse struct {

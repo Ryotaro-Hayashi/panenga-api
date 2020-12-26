@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"app_data/pkg/server/model"
-	"app_data/pkg/server/view"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"panenga-api/pkg/server/model"
+	"panenga-api/pkg/server/view"
 )
 
 func HandleGetPanels(c *gin.Context) {

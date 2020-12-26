@@ -1,4 +1,4 @@
-module app_data
+module panenga-api
 
 go 1.14
 
