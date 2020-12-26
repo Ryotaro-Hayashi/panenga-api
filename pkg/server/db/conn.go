@@ -37,13 +37,13 @@ func init() {
 			return
 		}
 
-		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS panenga_db;")
+		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS panenga_db")
 		if err != nil {
 			fmt.Errorf("create database, %s", err)
 			return
 		}
 
-		_, err = Conn.Exec("USE panenga_db;")
+		_, err = Conn.Exec("USE panenga_db")
 		if err != nil {
 			fmt.Errorf("use database, %s", err)
 			return
@@ -56,20 +56,20 @@ func init() {
 			panel_image     VARCHAR(255) NOT NULL UNIQUE,
 			created_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			updated_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-		  );
+		  )
 		")
 		if err != nil {
 			fmt.Errorf("create table, %s", err)
 			return
 		}
 
-		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ("三井アウトレットパーク札幌北広島", "https://file24-d.kuku.lu/files/20201226-0812_c12fae45310a831a7a39834c9ecd9dcb.jpg");")
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (三井アウトレットパーク札幌北広島, https://file24-d.kuku.lu/files/20201226-0812_c12fae45310a831a7a39834c9ecd9dcb.jpg)")
 		if err != nil {
 			fmt.Errorf("insert test data 1, %s", err)
 			return
 		}
 
-		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ("青森ねぶた祭り", "https://file24-d.kuku.lu/files/20201226-0814_1e834f3d94c0baf3e5e914dd7135181e.jpg");")
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (青森ねぶた祭り, https://file24-d.kuku.lu/files/20201226-0814_1e834f3d94c0baf3e5e914dd7135181e.jpg)")
 		if err != nil {
 			fmt.Errorf("insert test data 2, %s", err)
 			return
