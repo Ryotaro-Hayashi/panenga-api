@@ -14,7 +14,7 @@ func HandleGetPanels(c *gin.Context) {
 		view.ErrorResponse(
 			http.StatusInternalServerError,
 			"Internal Server Error",
-			"Database related error",
+			err,
 			c,
 		)
 		return
