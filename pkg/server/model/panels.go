@@ -13,7 +13,7 @@ type Panel struct {
 }
 
 func GetPanels() (panels []Panel, err error) {
-	rows, err := db.Conn.Query("SELECT id, title, panel_image, created_at FROM panels;")
+	rows, err := db.Conn.Query("SELECT id, title, panel_image, created_at FROM panels")
 
 	if err != nil {
 		err = fmt.Errorf("query get panels, %s", err)

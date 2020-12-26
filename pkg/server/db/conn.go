@@ -23,11 +23,15 @@ func init() {
 	password := os.Getenv("MYSQL_PASSWORD")
 	// 接続先ホスト
 	host := os.Getenv("MYSQL_HOST")
+	// ポート
+	port := os.Getenv("MYSQL_PORT")
 
 	var err error
 
 	if os.Getenv("PRODUCTION") == "true" {
-		Conn, err = sql.Open(driverName, fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?parseTime=true", user, password, host, database))
+    
+		Conn, err = sql.Open(driverName, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", user, password, host, port, database))
+
 
 		if err != nil {
 			fmt.Printf("open mysql, %s\n", err)
@@ -71,12 +75,40 @@ func init() {
 		}
 		fmt.Println("* ===== insert test data 2 success ===== *")
 
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('函館湯川温泉', 'https://file14-d.kuku.lu/files/20201226-1653_dccf804db713b5a6ee66256fdcffb68b.jpg')")
+		if err != nil {
+			fmt.Printf("insert test data 3, %s\n", err)
+			return
+		}
+		fmt.Println("* ===== insert test data 3 success ===== *")
+
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('函館五稜郭タワー', 'https://file14-d.kuku.lu/files/20201226-1651_537299245553a7d06578ebe54fa18b59.png')")
+		if err != nil {
+			fmt.Printf("insert test data 4, %s\n", err)
+			return
+		}
+		fmt.Println("* ===== insert test data 4 success ===== *")
+
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('北海道新幹線・新函館北斗駅', 'https://file14-d.kuku.lu/files/20201226-1651_988537a094b4e60d128b7ecc64ec7d70.jpg')")
+		if err != nil {
+			fmt.Printf("insert test data 5, %s\n", err)
+			return
+		}
+		fmt.Println("* ===== insert test data 5 success ===== *")
+
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('福岡のどこか', 'https://file14-d.kuku.lu/files/20201226-1650_0f3624c43d357b05a98dc7529db909d7.jpeg')")
+		if err != nil {
+			fmt.Printf("insert test data 6, %s\n", err)
+			return
+		}
+		fmt.Println("* ===== insert test data 6 success ===== *")
+
 	} else {
 		Conn, err = sql.Open(driverName,
-			fmt.Sprintf("%s:%s@tcp(%s:3306)/%s\n", user, password, host, database))
+			fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database))
 	}
 	if err != nil {
-		fmt.Printf("open mysql, %s", err)
+		fmt.Printf("open mysql, %s\n", err)
 	}
 	fmt.Println("* ===== open mysql success ===== *")
 }
