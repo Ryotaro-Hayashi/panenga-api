@@ -14,7 +14,6 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
       MYSQL_HOST: db
-      MYSQL_PORT: 3306
     container_name: api
     volumes:
       - .:/panenga-api
