@@ -41,9 +41,5 @@ func init() {
 
 	router.GET("/api/v1/panels", handler.HandleGetPanels)
 
-	router.GET("/hello", func(ctx *gin.Context) {
-        ctx.String(200, "Hello World")
-    })
-
 	Router = router
 }
