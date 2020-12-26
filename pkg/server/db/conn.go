@@ -38,13 +38,13 @@ func init() {
 
 		fmt.Println("open mysql success")
 
-		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS ?", database)
+		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS heroku_292c3038acfa34f")
 		if err != nil {
 			fmt.Printf("create database, %s\n", err)
 			return
 		}
 
-		_, err = Conn.Exec("USE ?", database)
+		_, err = Conn.Exec("USE heroku_292c3038acfa34f")
 		if err != nil {
 			fmt.Printf("use database, %s\n", err)
 			return
