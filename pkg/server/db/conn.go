@@ -50,7 +50,7 @@ func init() {
 			return
 		}
 
-		_, err = Conn.Exec("CREATE TABLE panels(id INTEGER PRIMARY KEY AUTO_INCREMENT, title VARCHAR(64) NOT NULL, panel_image VARCHAR(255) NOT NULL UNIQUE, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)")
+		_, err = Conn.Exec("CREATE TABLE panels(id INTEGER PRIMARY KEY AUTO_INCREMENT, title VARCHAR(64) NOT NULL, panel_image VARCHAR(255) NOT NULL UNIQUE, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)")
 		if err != nil {
 			fmt.Printf("create table, %s\n", err)
 			return
