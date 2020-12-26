@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS panenga_db;
+CREATE DATABASE IF NOT EXISTS `panenga_db`;
 
-USE panenga_db;
+USE `panenga_db`;
 
 CREATE TABLE panels(
   id              INTEGER PRIMARY KEY AUTO_INCREMENT,

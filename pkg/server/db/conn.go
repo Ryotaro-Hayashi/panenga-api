@@ -36,39 +36,42 @@ func init() {
 			return
 		}
 
-		fmt.Println("open mysql success")
+		fmt.Println("* ===== open mysql success ===== *")
 
 		_, err = Conn.Exec("CREATE DATABASE IF NOT EXISTS heroku_292c3038acfa34f")
 		if err != nil {
 			fmt.Printf("create database, %s\n", err)
 			return
 		}
+		fmt.Println("* ===== create database success ===== *")
 
 		_, err = Conn.Exec("USE heroku_292c3038acfa34f")
 		if err != nil {
 			fmt.Printf("use database, %s\n", err)
 			return
 		}
+		fmt.Println("* ===== use database success ===== *")
 
 		_, err = Conn.Exec("CREATE TABLE panels(id INTEGER PRIMARY KEY AUTO_INCREMENT, title VARCHAR(64) NOT NULL, panel_image VARCHAR(255) NOT NULL UNIQUE, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)")
 		if err != nil {
 			fmt.Printf("create table, %s\n", err)
 			return
 		}
+		fmt.Println("* ===== create table success ===== *")
 
-		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (三井アウトレットパーク札幌北広島, https://file24-d.kuku.lu/files/20201226-0812_c12fae45310a831a7a39834c9ecd9dcb.jpg)")
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('三井アウトレットパーク札幌北広島', 'https://file24-d.kuku.lu/files/20201226-0812_c12fae45310a831a7a39834c9ecd9dcb.jpg')")
 		if err != nil {
 			fmt.Printf("insert test data 1, %s\n", err)
 			return
 		}
+		fmt.Println("* ===== insert test data 1 success ===== *")
 
-		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES (青森ねぶた祭り, https://file24-d.kuku.lu/files/20201226-0814_1e834f3d94c0baf3e5e914dd7135181e.jpg)")
+		_, err = Conn.Exec("INSERT INTO panels (title, panel_image) VALUES ('青森ねぶた祭り', 'https://file24-d.kuku.lu/files/20201226-0814_1e834f3d94c0baf3e5e914dd7135181e.jpg')")
 		if err != nil {
 			fmt.Printf("insert test data 2, %s\n", err)
 			return
 		}
-
-		Conn.Close()
+		fmt.Println("* ===== insert test data 2 success ===== *")
 		
 	} else {
 		Conn, err = sql.Open(driverName,
@@ -77,4 +80,5 @@ func init() {
 	if err != nil {
 		fmt.Printf("open mysql, %s", err)
 	}
+	fmt.Println("* ===== open mysql success ===== *")
 }
