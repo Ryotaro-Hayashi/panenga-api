@@ -9,14 +9,20 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    environment:
+      MYSQL_DATABASE: panenga_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
     container_name: api
     volumes:
-      - .:/app_data
+      - .:/panenga-api
 
   db:
     image: mysql:5.7.22
     environment:
-      MYSQL_DATABASE: app_data
+      MYSQL_DATABASE: panenga_db
       MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
