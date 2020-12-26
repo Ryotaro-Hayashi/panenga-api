@@ -3,9 +3,8 @@ package db
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
-	"github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Driver名
@@ -27,9 +26,11 @@ func init() {
 	// 接続先ポート
 	port := os.Getenv("MYSQL_PORT")
 
-	Conn, err := sql.Open(driverName,
+	var err error
+
+	Conn, err = sql.Open(driverName,
 		fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database))
 	if err != nil {
-		log.Print(err)
+		fmt.Errorf("open mysql, %s", err)
 	}
 }

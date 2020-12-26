@@ -13,8 +13,8 @@ services:
       MYSQL_DATABASE: app_data
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
-      MYSQL_HOST: mysql
-      MYSQL_HOST: 
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
     container_name: api
     volumes:
       - .:/app_data
