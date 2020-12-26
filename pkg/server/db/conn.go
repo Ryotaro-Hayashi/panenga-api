@@ -29,7 +29,7 @@ func init() {
 	var err error
 
 	if os.Getenv("PRODUCTION") == "true" {
-		dataSource = os.Getenv("DATABASE_URL")
+		dataSource := os.Getenv("DATABASE_URL")
 		Conn, err = sql.Open(driverName, dataSource)
 	} else {
 		Conn, err = sql.Open(driverName,
