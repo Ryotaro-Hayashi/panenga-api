@@ -23,8 +23,6 @@ func init() {
 	password := os.Getenv("MYSQL_PASSWORD")
 	// 接続先ホスト
 	host := os.Getenv("MYSQL_HOST")
-	// 接続先ポート
-	port := os.Getenv("MYSQL_PORT")
 
 	var err error
 
@@ -72,10 +70,10 @@ func init() {
 			return
 		}
 		fmt.Println("* ===== insert test data 2 success ===== *")
-		
+
 	} else {
 		Conn, err = sql.Open(driverName,
-			fmt.Sprintf("%s:%s@tcp(%s:%s)/%s\n", user, password, host, port, database))
+			fmt.Sprintf("%s:%s@tcp(%s:3306)/%s\n", user, password, host, database))
 	}
 	if err != nil {
 		fmt.Printf("open mysql, %s", err)

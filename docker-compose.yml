@@ -10,11 +10,10 @@ services:
     depends_on:
       - db
     environment:
-      MYSQL_DATABASE: 'panenga_db'
+      MYSQL_DATABASE: panenga_db
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
       MYSQL_HOST: db
-      MYSQL_PORT: 3306
     container_name: api
     volumes:
       - .:/panenga-api
@@ -22,7 +21,7 @@ services:
   db:
     image: mysql:5.7.22
     environment:
-      MYSQL_DATABASE: 'panenga_db'
+      MYSQL_DATABASE: panenga_db
       MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
