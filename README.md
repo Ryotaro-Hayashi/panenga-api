@@ -10,6 +10,8 @@
 ## 本番環境
 Heroku + Golang + Gin + MySQL + Docker
 
+http://panenga-api.herokuapp.com/api/v1/panels
+
 ## 開発環境
 ### 起動
 `docker-compose up -d --build`
