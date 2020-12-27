@@ -1,21 +1,32 @@
 # panenga-api
+ウインターハッカソン〜オンラインでLVupする開発合宿 vol.5 〜
+チーム「Farmas」の開発サービス『パネンガ』のapiです。
 
-## 起動
+ドキュメントは[Wiki](https://github.com/Ryotaro-Hayashi/panenga-api/wiki/panenga-api-document)にあります。
+
+## システム構成図
+![パネンガ](https://user-images.githubusercontent.com/53222150/103163009-66ce5280-483b-11eb-9cbd-7d651b7c9b97.png)
+
+## 本番環境
+Heroku + Golang + Gin + MySQL + Docker
+
+## 開発環境
+### 起動
 `docker-compose up -d --build`
 
-## コンテナの削除
+### コンテナの削除
 `docker-compose down --volumes`
 
-## 命名規則
-### ファイル名：snake_case
+### 命名規則
+#### ファイル名：snake_case
 "物（単数形か複数形かも考慮）" + "アンダーバー " + "メソッド名" .go
 例）skills_get.go
-### 関数名・構造体名：UpperCamelCase
+#### 関数名・構造体名：UpperCamelCase
 例）GetSkills()
-### 変数名：lowerCamelCase
+#### 変数名：lowerCamelCase
 例）skillData 
 
-## 各ディレクトリの記述内容（MVC）
+### 各ディレクトリの記述内容（MVC）
 
 - Modelについて
 	Modelにはデータベースに変更を加える処理を書き込む.
@@ -24,7 +35,7 @@
 - Viewについて
     Viewにはレスポンスを成形する処理を書く.
 
-## ブランチ名について
+### ブランチ名について
 - master
 プロダクトとしてリリースするためのブランチ.
 - develop
@@ -36,7 +47,7 @@ feat/#{対応するissue番号}/{エンドポイント名など内容の詳細}
 変更・修正用のブランチ.
 fix/#{対応するissue番号}/{内容の詳細}
 
-## コミットメッセージについて
+### コミットメッセージについて
 
 以下のフォーマットとする.
 ```
